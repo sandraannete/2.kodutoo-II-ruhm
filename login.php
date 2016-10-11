@@ -137,8 +137,8 @@
 		//echo $serverUsername;
 		
 		// KASUTAN FUNKTSIOONi
-		signUp($signupEmail, $password);
-		
+		$signupEmail = cleanInput($signupEmail);
+		$signUp($signupEmail, cleanInput($signupPassword));
 
 	}
 	
@@ -146,7 +146,7 @@
 	if ( isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		!empty($_POST["loginEmail"]) && !empty($_POST["loginPassword"])
 	) {
-		$error = login($_POST["loginEmail"], $_POST["loginPassword"]);
+		$error = login(cleanInput($_POST["loginEmail"]), cleanInput($_POST["loginPassword"]));
 		
 		
 		
