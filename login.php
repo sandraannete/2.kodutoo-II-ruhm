@@ -29,6 +29,9 @@
 	$signupGender = "";
 	$loginEmailError = "";
 	$loginEmail = "";
+	$FirstName = "";
+	$LastName = "";
+
 
 
 	if( isset( $_POST["loginEmail"] ) ){
@@ -85,21 +88,29 @@
 			}
 			
 		}
-		
-	if(isset($_POST["eesnimi"]))
+	}
+
+	if(isset($_POST["FirstName"]))
 	{
-		if(empty($_POST["eesnimi"])) 
+		if(empty($_POST["FirstName"])) 
 		{
 			$signupFirstNameError = "See väli on kohustuslik";
+		}else {
+			
+			// email olemas 
+			$FirstName = $_POST["FirstName"];
+			
 		}
 	}
-	if(isset($_POST["perekonnanimi"]))
+	if(isset($_POST["LastName"]))
 	{
-		if(empty($_POST["perekonnanimi"]))
+		if(empty($_POST["LastName"]))
 		{
 			$signupLastNameError = "See väli on kohustuslik";
+		}else {
+			
+			$LastName = $_POST["LastName"];
 		}
-	}
 	}
 	
 	
@@ -119,6 +130,8 @@
 	
 	if ( isset($_POST["signupEmail"]) && 
 		 isset($_POST["signupPassword"]) && 
+		 isset($_POST["FirstName"]) &&
+		 isset($_POST["LastName"]) &&
 		 $signupEmailError == "" && 
 		 empty($signupPasswordError)
 		) {
@@ -127,7 +140,10 @@
 		echo "Salvestan... <br>";
 		
 		echo "email: ".$signupEmail."<br>";
+		echo "firstname: ".$FirstName."<br>";
+		echo "lastname: ".$LastName."<br>";
 		echo "password: ".$_POST["signupPassword"]."<br>";
+		echo "";
 		
 		$password = hash("sha512", $_POST["signupPassword"]);
 		
@@ -138,7 +154,9 @@
 		
 		// KASUTAN FUNKTSIOONi
 		$signupEmail = cleanInput($signupEmail);
-		$signUp($signupEmail, cleanInput($signupPassword));
+		$FirstName = cleanInput($FirstName);
+		$LastName = cleanInput($LastName);
+		signUp($signupEmail, cleanInput($password), $FirstName, $LastName);
 
 	}
 	
@@ -179,15 +197,15 @@
 			
 			<br><br>
 			
-			<input type="password" placeholder="Parool" name="signupPassword" /> 
+			<input name="signupPassword" placeholder="Parool" type = "Password" /> 
 			<?php echo $signupPasswordError; ?>
 			<br><br>
 			
-			<input name="eesnimi" placeholder="Eesnimi" type="name" />
+			<input name="FirstName" placeholder="Eesnimi" type="name" />
 			<?php echo $signupFirstNameError; ?>
 			<br><br>
 			
-			<input name="perekonnanimi" placeholder="Perekonnanimi" type="surname" />
+			<input name="LastName" placeholder="Perekonnanimi" type="surname" />
 			<?php echo $signupLastNameError; ?>
 			
 <h3>Sugu</h3>

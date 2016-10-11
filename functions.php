@@ -12,15 +12,15 @@
 	//**** SIGNUP ***
 	//***************
 	
-	function signUp ($email, $password) {
+	function signUp ($email, $password, $firstname, $lastname) {
 		
 		$database = "if16_sandra_2";
 		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
-		$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password) VALUES (?, ?)");
+		$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password, firstname, lastname) VALUES (?, ?, ?, ?)");
 	
 		echo $mysqli->error;
 		
-		$stmt->bind_param("ss", $email, $password);
+		$stmt->bind_param("ssss", $email, $password, $firstname, $lastname);
 		
 		if($stmt->execute()) {
 			echo "salvestamine õnnestus";
@@ -73,6 +73,7 @@
 				unset($_SESSION["message"]);
 				
 				header("Location: data.php");
+				exit();
 				
 			}else {
 				$error = "vale parool";
@@ -143,7 +144,16 @@
 		return $result;
 	}	
 		
-		
+	function cleanInput ($input){
+
+		$input = trim($input);
+		$input = stripslashes($input);
+		$input = htmlspecialchars($input);
+
+		return $input;
+
+
+	}	
 		
 		
 	

@@ -6,7 +6,9 @@
 	if (!isset($_SESSION["userId"])){
 		
 			//suunan sisselogimise lehele
+			//iga header järgi peaks exit command tulema
 			header("Location: login.php");
+			exit();
 	}
 	
 	//kui on ?logout aadressireal siis login välja
@@ -27,14 +29,16 @@
 	if ( isset($_POST["plate"]) && isset($_POST["color"]) &&
 		!empty($_POST["plate"]) && !empty($_POST["color"])
 	) {
-		saveCar($_POST["plate"], $_POST["color"]);
+		saveCar(cleanInput($_POST["plate"]), cleanInput($_POST["color"]));
 		
 		
 		
 	}
 	//saan kõik auto andmed,  echo pre paneb kõik andmed var dumpis korralikult rivisse
 	$carData = getAllcars();
-	
+	//echo "<pre>";
+	//var_dump($carData);
+	//echo "</pre>";
 	
 ?>
 <h1>Data</h1>
