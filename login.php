@@ -49,11 +49,8 @@
 	} 
 	
 
-	// on üldse olemas selline muutja
 	if( isset( $_POST["signupEmail"] ) ){
 		
-		//jah on olemas
-		//kas on tühi
 		if( empty( $_POST["signupEmail"] ) ){
 			
 			$signupEmailError = "See väli on kohustuslik";
@@ -77,10 +74,6 @@
 			
 		} else {
 			
-			// siia jõuan siis kui parool oli olemas - isset
-			// parool ei olnud tühi -empty
-			
-			// kas parooli pikkus on väiksem kui 8 
 			if ( strlen($_POST["signupPassword"]) < 8 ) {
 				
 				$signupPasswordError = "Parool peab olema vähemalt 8 tähemärkki pikk";
@@ -113,8 +106,6 @@
 		}
 	}
 	
-	
-	// GENDER
 	if( isset( $_POST["signupGender"] ) ){
 		
 		if(!empty( $_POST["signupGender"] ) ){
@@ -124,10 +115,7 @@
 		}
 		
 	} 
-	
-	// peab olema email ja parool
-	// ühtegi errorit
-	
+
 	if ( isset($_POST["signupEmail"]) && 
 		 isset($_POST["signupPassword"]) && 
 		 isset($_POST["FirstName"]) &&
@@ -136,7 +124,6 @@
 		 empty($signupPasswordError)
 		) {
 		
-		// salvestame ab'i
 		echo "Salvestan... <br>";
 		
 		echo "email: ".$signupEmail."<br>";
@@ -152,7 +139,7 @@
 		
 		//echo $serverUsername;
 		
-		// KASUTAN FUNKTSIOONi
+		// KASUTAN FUNKTSIOONI
 		$signupEmail = cleanInput($signupEmail);
 		$FirstName = cleanInput($FirstName);
 		$LastName = cleanInput($LastName);

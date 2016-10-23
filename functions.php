@@ -7,11 +7,6 @@
 	//see tuuakse välja teistes failides, kus ühendus peab püsima
 	session_start(); 
 	
-	
-	//***************
-	//**** SIGNUP ***
-	//***************
-	
 	function signUp ($email, $password, $firstname, $lastname) {
 		
 		$database = "if16_sandra_2";
@@ -47,17 +42,11 @@
 		//asendad küsimärgi bind_param- võtab muutuja ja asendab selle väärtusesse, mida on kolm :"s", "i", "d"
 		$stmt->bind_param("s", $email);
 		
-		
-		//määran väärtused muutujasse
 		$stmt->bind_result($id, $emailFromDb, $passwordFromDb, $created);
 		$stmt->execute();
 		
-		//tõene kui on vähemalt üks vaste
-		//andmed tulid andmebaasist v ei
 		if($stmt->fetch()){
 			
-			//oli sellise meiliga kasutaja
-			//password millega kasutaja tahab sisse logida
 			$hash = hash("sha512", $password);
 			if ($hash == $passwordFromDb) {
 				
@@ -69,7 +58,6 @@
 				
 				
 				//$_SESSION["message"] = <h1>Tere tulemast</h1>;
-				//kui ühe näitame siis kustuta ära, et pärast refreshi ei näitaks
 				unset($_SESSION["message"]);
 				
 				header("Location: data.php");
@@ -82,7 +70,6 @@
 		
 			
 		} else {
-				//ei leidnud kasutajat sellise meiliga
 				$error = "ei ole sellist emaili";
 				
 		}	

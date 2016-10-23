@@ -49,6 +49,30 @@
 <a href="data.php?logout=1">Logi välja </a>
 </p>
 
+	<h2>Leia infot seriaali kohta või salvesta</h2>
+		<form method="POST">
+
+			<select name="series">
+				<option value="westworld">Westworld</option>
+				<option value="ahs">American Horror Story</option>
+				<option value="lukecage">Luke Cage</option>
+				<option value="walkingdead">The Walking Dead</option>
+				<option value="newgirl">New Girl</option>
+				<option value="southpark">South Park</option>
+				<option value="modernfamily">Modern Family</option>
+				<option value="got">Game Of Thrones</option>
+				<option value="vikings">Vikings</option>
+				<option value="narcos">Narcos</option>
+				<option value="supernatural">Supernatural</option>
+				<option value="gotham">Gotham</option>
+				<option value="mrrobot">Mr.Robot</option>
+			</select>	
+			<br><br>
+		<input type="submit" value="Otsi"> 
+		<input type="submit" value="Salvesta">
+	
+
+
 	<h2>Salvesta auto</h2>
 		<form method="POST">
 		
