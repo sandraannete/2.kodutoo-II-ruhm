@@ -78,6 +78,59 @@
 		
 	}
 	
+	function saveSeries ($seriesname) {
+		
+		$database = "if16_sandra_2";
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+		$stmt = $mysqli->prepare("INSERT INTO user_series (seriesname) VALUES (?)");
+		
+		//kirjutab ette kus täpselt viga on 
+		echo $mysqli->error;
+		
+		$stmt->bind_param("s", $seriesname);
+		
+		if($stmt->execute()) {
+			echo "salvestamine õnnestus";
+		} else {
+		 	echo "ERROR ".$stmt->error;
+		}
+		
+	}
+
+	function getAllSeries() {
+		
+		$database = "if16_sandra_2";
+		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+		$stmt = $mysqli->prepare("SELECT id, seriesname, FROM user_series");
+		
+		$stmt->bind_result($id, $seriesname);
+		$stmt->execute();
+		
+		//tekitan massiivi
+		$result = array();
+		
+		//while tingimus-tee seda kuni on rida andmeid
+		//mis vastab select lausele
+		// while järgne sulu sisu määrab kaua korratakse
+		while($stmt->fetch()) {
+			
+			//tekitan objekti
+			$series = new StdClass();
+			$series->id = $id;
+			$series->seriesname = $seriesname;
+			
+			//echo $plate."<br>";
+			//igakord massiivi lisan juurde numbrimärgi
+			array_push($result, $series);
+			
+		}
+		
+		$stmt->close();
+		$mysqli->close();
+		
+		return $result;
+	}
+
 	function saveCar ($plate, $color) {
 		
 		$database = "if16_sandra_2";
@@ -96,6 +149,8 @@
 		}
 		
 	}
+	
+
 	function getAllCars() {
 		
 		$database = "if16_sandra_2";

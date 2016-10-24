@@ -25,14 +25,17 @@
 	unset($_SESSION["message"]);
 	}
 	
+	if ( isset($_POST["seriesname"]) && !empty($_POST["seriesname"])
+	) {
+		saveSeries(cleanInput($_POST["seriesname"]));
+		
+	}
 	
 	if ( isset($_POST["plate"]) && isset($_POST["color"]) &&
 		!empty($_POST["plate"]) && !empty($_POST["color"])
 	) {
 		saveCar(cleanInput($_POST["plate"]), cleanInput($_POST["color"]));
-		
-		
-		
+			
 	}
 	//saan kõik auto andmed,  echo pre paneb kõik andmed var dumpis korralikult rivisse
 	$carData = getAllcars();
@@ -48,8 +51,8 @@
 <p> Tere tulemast <?=$_SESSION ["userEmail"];?>!
 <a href="data.php?logout=1">Logi välja </a>
 </p>
-
-	<h2>Leia infot seriaali kohta või salvesta</h2>
+	<br><br>
+	<h2>Leia infot seriaali kohta </h2>
 		<form method="POST">
 
 			<select name="series">
@@ -67,10 +70,17 @@
 				<option value="gotham">Gotham</option>
 				<option value="mrrobot">Mr.Robot</option>
 			</select>	
-			<br><br>
+		
 		<input type="submit" value="Otsi"> 
+		<br><br>
+
+	<h2>Salvesta oma lemmikseriaalid</h2>
+		<form method="POST">
+			<input name="seriesname" placeholder="Seriaali nimi" type="text">
+
 		<input type="submit" value="Salvesta">
-	
+
+		<br><br><br><br>
 
 
 	<h2>Salvesta auto</h2>
