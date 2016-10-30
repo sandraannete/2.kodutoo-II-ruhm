@@ -152,19 +152,17 @@
 		!empty($_POST["loginEmail"]) && !empty($_POST["loginPassword"])
 	) {
 		$error = login(cleanInput($_POST["loginEmail"]), cleanInput($_POST["loginPassword"]));
-		
-		
-		
+
 	}
+
 ?>
 <!DOCTYPE html>
 <body style="background-color:palegreen;">
 <html>
-<head>
-	<title>Logi sisse või loo kasutaja</title>
+	<h1>Logi sisse või loo kasutaja</h1>
 </head>
 <body>
-	<h1>Logi sisse</h1>
+	<h2>Logi sisse</h2>
 		<form method="POST"> 
 			<p style="color:red;"><?=$error;?></p>
 			
@@ -177,7 +175,7 @@
 			
 		</form>
 		
-	<h1>Loo kasutaja</h1>
+	<h2>Loo kasutaja</h2>
 		<form method="POST">
 			<input name="signupEmail" placeholder="E-post" type="text" value="<?=$signupEmail;?>" />
 			<?php echo $signupEmailError; ?>

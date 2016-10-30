@@ -52,8 +52,19 @@
 <a href="data.php?logout=1">Logi välja </a>
 </p>
 	<br><br>
+	<body style="background-color:palegreen;">
 	<h2>Leia infot seriaali kohta </h2>
 		<form method="POST">
+
+		<form name="series">
+			<select name="menu" onChange="window.document.location.href=this.options[this.selectedIndex].value;" 
+			value="GO">
+			<option selected="selected">Vali üks</option>
+			<option value="http://www.imdb.com/title/tt0475784/episodes?ref_=tt_ov_epl">Westworld</option>
+			</select>
+		</form>	
+
+
 
 			<select name="series">
 				<option value="westworld">Westworld</option>
