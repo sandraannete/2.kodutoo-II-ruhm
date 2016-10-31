@@ -114,7 +114,6 @@
 			$html .= "<td>".$c->plate."</td>";
 			$html .= "<td style='background-color:".$c->color."'>".$c->color."</td>";
 	$html .= "</tr>";
-	
 		
 	}
 	

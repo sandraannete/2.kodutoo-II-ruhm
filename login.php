@@ -33,7 +33,6 @@
 	$LastName = "";
 
 
-
 	if( isset( $_POST["loginEmail"] ) ){
 		
 		if( empty( $_POST["loginEmail"] ) ){
