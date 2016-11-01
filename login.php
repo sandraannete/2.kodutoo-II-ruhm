@@ -123,17 +123,17 @@
 		 empty($signupPasswordError)
 		) {
 		
-		echo "Salvestan... <br>";
-		
-		echo "email: ".$signupEmail."<br>";
-		echo "firstname: ".$FirstName."<br>";
-		echo "lastname: ".$LastName."<br>";
-		echo "password: ".$_POST["signupPassword"]."<br>";
-		echo "";
+		//echo "Salvestan... <br>";
+		//
+		//echo "email: ".$signupEmail."<br>";
+		//echo "firstname: ".$FirstName."<br>";
+		//echo "lastname: ".$LastName."<br>";
+		//echo "password: ".$_POST["signupPassword"]."<br>";
+		//echo "";
 		
 		$password = hash("sha512", $_POST["signupPassword"]);
 		
-		echo "password hashed: ".$password."<br>";
+		//echo "password hashed: ".$password."<br>";
 		
 		
 		//echo $serverUsername;

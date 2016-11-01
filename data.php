@@ -47,7 +47,6 @@
 <h1>Data</h1>
 <?=$msg;?>
 
-
 <p> Tere tulemast <?=$_SESSION ["userEmail"];?>!
 <a href="data.php?logout=1">Logi välja </a>
 </p>
