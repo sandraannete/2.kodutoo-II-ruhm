@@ -89,7 +89,7 @@
 			$signupFirstNameError = "See väli on kohustuslik";
 		}else {
 			
-			// email olemas 
+			
 			$FirstName = $_POST["FirstName"];
 			
 		}
@@ -165,11 +165,13 @@
 		<form method="POST"> 
 			<p style="color:red;"><?=$error;?></p>
 			
-			<input name="loginEmail" placeholder="E-post" type="Email">
+			<input name="loginEmail" placeholder="E-post" type="Email" value="<?=$loginEmail;?>">
 			<?php echo $loginEmailError; ?>
 			<br><br>
+
 			<input name="loginPassword" placeholder="Parool" type="password">
 			<br><br>
+			
 			<input type="submit" value="Logi sisse">
 			
 		</form>
